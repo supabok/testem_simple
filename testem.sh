@@ -1,1 +1,1 @@
-testem ci > tests/tests.tap
+testem ci > tests.tap
