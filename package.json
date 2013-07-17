@@ -1,0 +1,19 @@
+{
+  "name": "awesome",
+  "version": "0.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    
+  },
+  "keywords": [
+    "jenkins",
+    "grunt",
+    "sample"
+  ],
+  "author": "supabok",
+  "license": "MIT",
+  "devDependencies": {
+    "testem":"latest"
+  }
+}
