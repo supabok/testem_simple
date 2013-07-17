@@ -1,0 +1,1 @@
+testem ci > tests/tests.tap
