@@ -1,0 +1,10 @@
+src_files:
+    - hello.js
+    - hello_spec.js
+
+launchers:
+    CI:
+        command: mocha --timeout 3000 hello_spec.js -R tap
+        protocol: tap
+launch_in_ci:
+    - CI
