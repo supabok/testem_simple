@@ -1,4 +1,5 @@
 .DS_Store
+.idea
 node_modules/.DS_Store
 node_modules/.bin/testem
 node_modules/testem/.DS_Store
