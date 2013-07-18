@@ -1,6 +1,7 @@
 // Pull the plugin from Maven Central
 buildscript {
     repositories {
+        mavenLocal()
         mavenCentral()
     }
     dependencies {
@@ -25,4 +26,44 @@ javascript.source {
             include "*.min.js"
         }
     }
+}
+
+task test(dependsOn: 'init') << {
+	description = 'run QUnit tests and create JUnit test reports'
+
+	def specs = []
+	new File(testDir).eachFile {
+		if (it.name.endsWith('.html')) {
+			specs << it
+		}
+	}
+
+	def phantomJsPath = "which phantomjs".execute().text.trim()
+	def startTime = new Date().time
+	def numFailures = 0
+	def testsFailed = false
+	specs.each { File spec ->
+		print "Running ${spec.name}..."
+
+		def outputFile = "${buildDir}/TEST-${spec.name.replace('-', '').replace('.html', '.xml')}"
+		ant.exec(outputproperty: 'cmdOut', errorproperty: 'cmdErr',
+				resultproperty: 'exitCode', failonerror: 'false', executable: phantomJsPath) {
+			arg(value: 'test/lib/phantomjs-qunit-runner.js')
+			arg(value: spec.canonicalPath)
+		}
+		// Check exit code
+		if (ant.project.properties.exitCode != '0') {
+			testsFailed = true
+			numFailures++
+			println 'FAILED'
+		} else {
+			println 'PASSED'
+		}
+
+		new File(outputFile).write(ant.project.properties.cmdOut)
+	}
+
+	println "QUnit tests completed in ${new Date().time - startTime}ms"
+	println "QUnit Tests ${testsFailed ? 'FAILED' : 'PASSED'} - view reports in ${buildDir}"
+	ant.fail(if: testsFailed, message: 'JS Tests Failed')
 }
