@@ -1,3 +1,3 @@
 testem_simple
 =============
-https://travis-ci.org/supabok/testem_simple.png
+[![Build Status](https://travis-ci.org/supabok/testem_simple.png)](https://travis-ci.org/supabok/testem_simple)
