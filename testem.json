@@ -1,3 +1,10 @@
 {
-	"launch_in_ci":["PhantomJS"]
+    "launchers": {
+        "tap": {
+            "command": "node hello_spec.js",
+            "protocol": "tap"
+        }
+    },
+    "launch_in_dev": [ "tap" ],
+    "launch_in_ci": [ "tap" ]
 }

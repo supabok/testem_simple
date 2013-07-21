@@ -1,17 +1,16 @@
 {
-  "name": "awesome",
-  "version": "0.0.0",
-  "description": "",
-  "main": "",
-  "scripts": {
-    
-  },
-  "keywords": [
-    "jenkins"
-  ],
-  "author": "supabok",
-  "license": "MIT",
+  "name": "node_tap_example",
+  "version": "0.0.1",
+  "description": "example",
+  "main": "hello.js",
+  "dependencies": {},
   "devDependencies": {
-    "testem":"latest"
-  }
+    "tap": "~0.3.1"
+  },
+  "scripts": {
+    "test": "node tests.js"
+  },
+  "repository": "",
+  "author": "",
+  "license": "BSD"
 }
